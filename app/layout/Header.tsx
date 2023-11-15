@@ -1,16 +1,23 @@
-import React from 'react'
+"use client";
 
-import Link from 'next/link'
+import React from "react";
+
+import Link from "next/link";
+
+import { SessionProvider } from "next-auth/react";
+import { Button as AuthButton } from "../auth/Button";
 
 const Header = () => {
   return (
-    <div className="border-b flex justify-between">
+    <SessionProvider>
+      <div className="border-b flex justify-between">
         <Link href="/" className="text-4xl py-4">
-            LOGO
+          LOGO
         </Link>
-        <button className="text-white bg-black px-4 py-4">Sign in</button>
-    </div>
-  )
-}
+        <AuthButton />
+      </div>
+    </SessionProvider>
+  );
+};
 
-export default Header
+export default Header;
